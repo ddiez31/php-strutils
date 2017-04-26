@@ -2,6 +2,7 @@
 
 class StrUtils {
     private $str;
+    public $uglify = false;
     public function __construct($str) {
         $this->str = $str;
     }
@@ -12,46 +13,36 @@ class StrUtils {
         $this->str = $data;
     }
     public function bold() {
-        $this->setStr('<strong>'.$this->getStr().'</strong>');
+        switch ($this->uglify) {
+            case true: $this->setStr('<strong>'.$this->getStr().'</strong>'); break;
+            default: $this->setStr('<strong>'.strip_tags($this->getStr()).'</strong>'); break;
+        }
     }
     public function italic() {
-        $this->setStr('<em>'.$this->getStr().'</em>');
+        switch ($this->uglify) {
+            case true: $this->setStr('<em>'.$this->getStr().'</em>'); break;
+            default: $this->setStr('<em>'.strip_tags($this->getStr()).'</em>'); break;
+        }
     }
     public function underline() {
-        $this->setStr('<span style="text-decoration: underline;">'.$this->getStr().'</span>');
+        switch ($this->uglify) {
+            case true: $this->setStr('<span style="text-decoration: underline;">'.$this->getStr().'</span>'); break;
+            default: $this->setStr('<span style="text-decoration: underline;">'.strip_tags($this->getStr()).'</span>'); break;
+        }
     }
     public function capitalize() {
-        $this->setStr('<span style="text-transform: capitalize;">'.$this->getStr().'</span>');
+        switch ($this->uglify) {
+            case true: $this->setStr('<span style="text-transform: capitalize;">'.$this->getStr().'</span>'); break;
+            default: $this->setStr('<span style="text-transform: capitalize;">'.strip_tags($this->getStr()).'</span>'); break;
+        }
     }
     public function uglify() {
         $this->bold();
+        $this->uglify = true;
         $this->italic();
-        $this->underline();
+        $this->underline();       
     }
 }
 
-// class StrUtils {
-//     private $str;
-//     public function __construct($str) {
-//         $this->str = $str;
-//     }
-//     public function bold() {
-//         echo '<strong>'.$this->str.'</strong><br>';
-//     }
-//     public function italic() {
-//         echo '<em>'.$this->str.'</em><br>';
-//     }
-//     public function underline() {
-//         echo '<span style="text-decoration: underline;">'.$this->str.'</span><br>';
-//     }
-//     public function capitalize() {
-//         echo '<span style="text-transform: capitalize;">'.$this->str.'</span><br>';
-//     }
-//     public function uglify() {
-//         $this->bold();
-//         $this->italic();
-//         $this->underline();
-//     }
-// }
 
 ?>
