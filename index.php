@@ -40,6 +40,8 @@ $y->capitalize();
 echo $y->getStr().'<br>';
 $y->uglify();
 echo $y->getStr().'<br>';
+$y->bold();
+echo $y->getStr().'<br>';
 
 
 echo '<hr>';

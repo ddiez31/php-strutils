@@ -41,7 +41,9 @@ class StrUtils {
         $this->setStr(strip_tags($this->getStr()));
         $this->bold();
         $this->italic();
-        $this->underline();       
+        $this->underline();   
+        $this->uglify = false;
+    
     }
 }
 
