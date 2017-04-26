@@ -37,8 +37,9 @@ class StrUtils {
         }
     }
     public function uglify() {
-        $this->bold();
         $this->uglify = true;
+        $this->setStr(strip_tags($this->getStr()));
+        $this->bold();
         $this->italic();
         $this->underline();       
     }
